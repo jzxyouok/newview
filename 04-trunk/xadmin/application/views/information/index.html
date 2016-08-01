@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatibel" content="IE=edge,chrome=1">
+    <title><?=MYTITLE?></title>
+    <base href="<?=MYBASEURL?>"/>
+    <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<?php require_once(VIEWPATH.'/include/header.html');?>
+<!-- 主内容区域 -->
+<div class="container-fluid iframe-container iframe-inverse">
+    <?php require_once(VIEWPATH.'/include/left.html');?>
+    <!-- 主面板 -->
+    <div class="iframe-main">
+        <div class="iframe-main-sidebar">
+            <div class="main_sidebar_title">信息分类</div>
+            <div class="main_sidebar_tree">
+                <div class="mtree" data-name="mtree"><?=$category_list?></div>
+            </div>
+        </div>
+        <div class="iframe-main-section">
+            <div class="nocategory"><i class="fa fa-exclamation-circle"></i>请选择信息分类</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

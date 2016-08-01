@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?=MYTITLE?></title>
+    <base href="<?=base_url()?>">
+    <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugin/lib/css/non-responsive.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="plugin/lib/js/html5shiv.min.js"></script>
+    <script type="text/javascript" src="plugin/lib/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container header_container">
+    <div class="logo">信息管理平台</div>
+    <div class="expressway">
+        <a href="../">返回首页</a>
+    </div>
+</div>
+<div class="container form_login">
+    <form action="<?=$tpl_form_url?>" method="post">
+        <div class="form-group">
+            <input type="text" value="<?=set_value('username')?>" class="form-control" name="username"
+                   autocomplete="off"
+                   placeholder="用户名">
+            <div class="form_alert text-danger"><?=form_error('username')?></div>
+        </div>
+        <div class="form-group">
+            <input type="password" value="<?=set_value('password')?>" class="form-control" name="password"
+                   autocomplete="off" placeholder="密码">
+            <div class="form_alert text-danger"><?=form_error('password')?></div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control txtcode" name="code" maxlength="4" autocomplete="off"
+                       placeholder="验证码">
+                <div class="input-group-addon">
+                    <img src="<?=site_url('login/code')?>" title="看不清，换一张"
+                         onClick="this.src=this.src.replace(/\?\w=\d\.\d+/,'')+'?r='+Math.random();">
+                </div>
+            </div>
+            <div class="form_alert text-danger"><?=form_error('code')?></div>
+        </div>
+        <button type="submit" class="btn btn-primary">登录</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../fontawesome/css/font-awesome.min.css">
+</head>
+<body>
+
+
+</body>
+<script type="text/javascript" src="../jquery.min.js"></script>
+<script type="text/javascript" src="layer.js"></script>
+<script type="text/javascript">
+	$(function(){
+		layer.ready(function() {
+			// layer.open({
+			// 	type:1,
+			// 	area:["90%","90%"],
+			// 	content:"提示信息"
+			// });
+			// layer.alert('只想简单的提示');
+			// layer.confirm('is not?', {icon: 3, title:'提示',shade:false}, function(index){
+			//   dosoming
+			//   layer.close(index);
+			// });
+			layer.open({
+				type:2,
+				maxmin:true,
+				area:["90%","90%"],
+				content:"http://www.163.com"
+			});
+			// layer.msg('有表情地提示有表情地提示有表情地提示有表情地提示有表情地提示有表情地提示有表情地提示', {icon: 5,time:0});
+			// layer.load();
+		});
+	});
+</script>
+</html>

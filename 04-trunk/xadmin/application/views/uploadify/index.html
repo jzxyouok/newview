@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatibel" content="IE=edge,chrome=1">
+    <title><?=MYTITLE?></title>
+    <base href="<?=MYBASEURL?>"/>
+    <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugin/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="plugin/uploadify/uploadify.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+    <script src="plugin/lib/js/html5shiv.min.js"></script>
+    <script src="plugin/lib/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container_uploadify">
+    <ul class="nav nav-tabs navbar-fixed-top" role="tablist">
+        <li class="active">
+            <a href="#local" aria-controls="local" role="tab" data-toggle="tab">本地上传</a>
+        </li>
+        <!--<li>
+            <a href="#online" aria-controls="online" role="tab" data-toggle="tab">在线管理</a>
+        </li>
+        <li>
+            <a href="#remote" aria-controls="remote" role="tab" data-toggle="tab">远程文件</a>
+        </li>-->
+        <span data-name="uploadify_cancel" class="fa_close_btn"><i class="fa fa-close"></i></span>
+    </ul>
+    <div class="container-fluid uploadify_fluid">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active local_upload" id="local">
+                <input id="file_upload" name="files" type="file" multiple="true" style="display: none;">
+                <div class="uploadify-queue-list">
+                    <div class="uploadify-swf-loading" data-name="uploadify_swf_loading">组件正在加载...</div>
+                    <div data-name="queue_row"></div>
+                    <div id="uploadify-queue" class="uploadify-queue"></div>
+                </div>
+                <div class="uploadify-btn-container text-right">
+                    <div class="uploadify-count pull-left">
+                        已上传：<span data-name="uploadify_count_num">0</span>
+                        上传成功：<span data-name="uploadify_success_num">0</span>
+                        上传失败：<span data-name="uploadify_error_num">0</span>
+                    </div>
+                    <div class="uploadify-upload hidden" data-name="uploadify_upload">
+                        <a href="javascript:;" data-name="uploadify_cancel" class="btn btn-default">取消</a>
+                        <a href="javascript:$('#file_upload').uploadify('upload','*')" class="btn btn-primary">开始上传</a>
+                    </div>
+                    <div class="uploadify-confirm hidden" data-name="uploadify_confirm">
+                        <!--<a href="javascript:$('#file_upload').uploadify('cancel','*');" class="btn btn-success">继续上传</a>-->
+                        <a href="javascript:;" class="btn btn-default" data-name="confirm">确定</a>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="online">在线文件</div>
+            <div role="tabpanel" class="tab-pane fade" id="remote">远程文件</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="plugin/lib/js/jquery.min.js"></script>
+<script src="plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugin/layer/layer.js"></script>
+<script src="plugin/uploadify/jquery.uploadify.js"></script>
+<script src="plugin/lib/js/jquery.cookie.js"></script>
+<script>
+    $(function () {
+        var uploadifyJson = JSON.parse($.cookie('uploadify'));
+        var uploadify = '#file_upload';
+        var uploadifyHide = 'uploadify_hide';
+        var index = parent.layer.getFrameIndex(window.name);//弹窗索引
+        var queueArr = [];
+        var allowedFileSize = (uploadifyJson.size) ? uploadifyJson.size : '2MB';
+        var allowedFileNum = (uploadifyJson.num) ? uploadifyJson.num : 1;
+        var uploadedFileQueue = (uploadifyJson.queue) ? uploadifyJson.queue : 'image';
+        //文件上传
+        $(uploadify).uploadify({
+            'auto': false,
+            'buttonText': '点击选择文件',
+            'fileObjName': 'files',
+            'fileSizeLimit': allowedFileSize,
+            'fileTypeExts': '*.gif; *.jpg; *.png',
+            'formData': {
+                'timestamp': '<?=$tpl_timestamp?>',
+                'token': '<?=$tpl_token?>'
+            },
+            'width': 168,
+            'height': 44,
+            'itemTemplate': '<div id="${fileID}" class="uploadify-queue-item">\
+                                <div class="uploadify-info">\
+                                    <div class="cancel" data-name="uploadify_queue_cancel">\
+                                        <a href="javascript:$(\'#${instanceID}\').uploadify(\'cancel\', \'${fileID}\')">&times;</a>\
+                                    </div>\
+                                    <span class="fileName">${fileName} (${fileSize})</span>\
+                                    <span class="data"></span>\
+                                    <div class="uploadify-progress">\
+                                        <div class="uploadify-progress-bar"></div>\
+                                    </div>\
+                                </div>\
+                            </div>',
+            'queueID': 'uploadify-queue',
+            'queueSizeLimit': allowedFileNum,
+            'removeCompleted': false,
+            'swf': '<?=$tpl_uploadify_swf?>',
+            'uploader': '<?=$tpl_upload_server_url?>',
+            'multi': (allowedFileNum > 1) ? true : false,
+            'onSWFReady': function () {
+                $('[data-name="uploadify_swf_loading"]').hide();
+                $(this).show();
+            },
+            'onCancel': function (file) {
+                setUploadBtn(0);
+            },
+            'onClearQueue': function (file) {
+                setUploadBtn(0);
+            },
+            'onSelect': function (file) {
+                setUploadBtn(1);
+            },
+            'onUploadStart': function (file) {
+                $('[data-name="uploadify_upload"]').addClass('hidden');
+                $('[data-name="uploadify_confirm"]').removeClass('hidden');
+            },
+            'onUploadError': function (file, errorCode, errorMsg, errorString) {
+                $('#' + file.id).find('.cancel').fadeOut();
+                $('[data-name="uploadify_error_num"]').html(parseInt($('[data-name="uploadify_error_num"]').html()) + 1);
+            },
+            'onUploadSuccess': function (file, data, response) {
+                $('#' + file.id).find('.data').html(' - 上传成功');
+                $('#' + file.id).find('.uploadify-progress').fadeOut();
+                $('#' + file.id).find('.cancel').fadeOut();
+                $('#' + file.id).addClass('uploadify-success');
+                $('[data-name="uploadify_success_num"]').html(parseInt($('[data-name="uploadify_success_num"]').html()) + 1);
+                queueArr.push(JSON.parse(data));
+            },
+            'onUploadComplete': function (file) {
+                $('[data-name="uploadify_count_num"]').html(parseInt($('[data-name="uploadify_count_num"]').html()) + 1);
+            }
+        });
+
+        //关闭弹窗
+        $('[data-name="uploadify_cancel"]').on('click', function () {
+            $.cookie('uploadify', '', {path: '/', expires: -1});
+            parent.layer.close(index);
+        });
+
+        //确定
+        $('[data-name="confirm"]').on('click', function () {
+            var strHtml = '';
+            $.each(queueArr, function (e, val) {
+                strHtml += '<li>';
+                strHtml += '<div class="thumbnail">';
+                if (val.is_image) {
+                    strHtml += '<img src="' + val.full_relative_path + '">';
+                } else {
+                    switch (val.file_ext) {
+                        case '.docx':
+                        case '.doc':
+                            strHtml += '<i class="fa fa-file-word-o"></i>';
+                            break;
+                        case '.xlsx':
+                        case '.xls':
+                            strHtml += '<i class="fa fa-file-excel-o"></i>';
+                            break;
+                        case '.pptx':
+                        case '.ppt':
+                            strHtml += '<i class="fa fa-file-powerpoint-o"></i>';
+                            break;
+                        case '.pdf':
+                            strHtml += '<i class="fa fa-file-pdf-o"></i>';
+                            break;
+                        case '.txt':
+                            strHtml += '<i class="fa fa-file-text-o"></i>';
+                            break;
+                        case '.rar':
+                        case '.zip':
+                        case '.7z':
+                            strHtml += '<i class="fa fa-file-zip-o"></i>';
+                            break;
+                        case '.mp3':
+                        case '.wav':
+                        case '.rm':
+                            strHtml += '<i class="fa fa-file-sound-o"></i>';
+                            break;
+                        case '.avi':
+                        case '.wma':
+                        case '.rmvb':
+                        case '.flv':
+                        case '.mp4':
+                        case '.3gp':
+                        case '.flash':
+                            strHtml += '<i class="fa fa-file-movie-o"></i>';
+                            break;
+                        default:
+                            strHtml += '<i class="fa fa-file-o"></i>';
+                            break;
+                    }
+                    strHtml += ' ' + val.file_ext;
+                }
+                strHtml += '</div>';
+                strHtml += '<div class="opera">';
+                strHtml += '<div class="row">';
+                //strHtml += '<a href="javascript:;" class="btn btn-default btn-sm pull-left">编辑</a>';
+                strHtml += '<a href="javascript:;" class="btn btn-danger btn-sm pull-right" data-name="upload_remove">删除</a>';
+                strHtml += '</div>';
+//                if (val.is_image && allowedFileNum > 1) {
+//                 strHtml += '<div class="row text-center">';
+//                 strHtml += '<a href="javascript:;" class="btn btn-default btn-sm" data-name="upload_cover">设为封面</a>';
+//                 strHtml += '</div>';
+//                 }
+                strHtml += '</div>';
+                strHtml += '<input type="hidden" name="' + uploadedFileQueue + '[]" value="' + val.insert_id + '">';
+                strHtml += '</li>';
+            });
+            if (allowedFileNum == 1) {
+                $('[data-name="' + uploadedFileQueue + '"]', parent.document).html(strHtml);
+            } else {
+                $('[data-name="' + uploadedFileQueue + '"]', parent.document).append(strHtml);
+            }
+            parent.layer.close(index);
+        });
+
+        /**
+         * 显示/隐藏上传按钮
+         * @param $status 状态：0=隐藏，1=显示
+         */
+        function setUploadBtn($status) {
+            var len = $('#uploadify-queue .uploadify-queue-item').length;
+            if ($status == 0) {
+                if (len == 0) {
+                    $(uploadify).removeClass(uploadifyHide);
+                    $('[data-name="uploadify_upload"],[data-name="uploadify_confirm"]').addClass('hidden');
+                }
+            } else {
+                $(uploadify).addClass(uploadifyHide);
+                $('[data-name="uploadify_upload"]').removeClass('hidden');
+            }
+        }
+
+    });
+
+</script>
+</html>

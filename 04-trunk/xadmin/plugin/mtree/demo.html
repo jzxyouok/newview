@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>树状菜单</title>
+		<link rel="stylesheet" type="text/css" href="css/mtree.css">
+		<link rel="stylesheet" type="text/css" href="../fontawesome/css/font-awesome.min.css">
+		<script type="text/javascript" src="../jquery.min.js"></script>
+		<script type="text/javascript" src="js/mtree.js"></script>
+	</head>
+	<body>
+		<div class="mtree" data-name="mtree">
+			<ul data-level="0">
+				<li>
+					<a href="javascript:;" data-name="mtree_link">
+						<span data-name="mtree_indent"></span>
+						<span data-name="mtree_btn"></span>
+						<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+						<span data-name="mtree_name">一级节点1</span>
+					</a>
+					<ul data-level="1">
+						<li>
+							<a href="##" data-name="mtree_link">
+								<span data-name="mtree_indent"></span>
+								<span data-name="mtree_btn"></span>
+								<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+								<span data-name="mtree_name">二级节点1-1</span>
+							</a>
+							<ul data-level="2">
+								<li>
+									<a href="##" data-name="mtree_link">
+										<span data-name="mtree_indent"></span>
+										<span data-name="mtree_btn"></span>
+										<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+										<span data-name="mtree_name">三级节点1-1-1</span>
+									</a>
+								</li>
+								<li>
+									<a href="##" data-name="mtree_link">
+										<span data-name="mtree_indent"></span>
+										<span data-name="mtree_btn"></span>
+										<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+										<span data-name="mtree_name">三级节点1-1-2</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="##" data-name="mtree_link">
+								<span data-name="mtree_indent"></span>
+								<span data-name="mtree_btn"></span>
+								<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+								<span data-name="mtree_name">二级节点1-2</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="##" data-name="mtree_link">
+						<span data-name="mtree_indent"></span>
+						<span data-name="mtree_btn"></span>
+						<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+						<span data-name="mtree_name">一级节点2</span>
+					</a>
+					<ul data-level="1">
+						<li>
+							<a href="##" data-name="mtree_link">
+								<span data-name="mtree_indent"></span>
+								<span data-name="mtree_btn"></span>
+								<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+								<span data-name="mtree_name">二级节点2-1</span>
+							</a>
+						</li>
+						<li>
+							<a href="##" data-name="mtree_link">
+								<span data-name="mtree_indent"></span>
+								<span data-name="mtree_btn"></span>
+								<span data-name="mtree_checkbox"><label><input type="checkbox" name=""></label></span>
+								<span data-name="mtree_name">二级节点2-2</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

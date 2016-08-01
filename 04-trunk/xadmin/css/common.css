@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+
+input,
+label,
+select,
+textarea,
+button,
+input:focus,
+label:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none !important;
+}
+
+ul,
+ol,
+li {
+    list-style: none !important;
+}
+
+/*a标签*/
+
+a,
+a:hover,
+a:focus,
+a:active,
+a:visited {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+a.disabled {
+    color: #777;
+    cursor: not-allowed;
+}
+
+/*滚动条*/
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px
+}
+
+::-webkit-scrollbar-thumb {
+    position: relative;
+    min-height: 25px;
+    background: #ccc;
+}
+
+/* mcheck */
+
+@media screen and (min-width: 0px) and (max-width: 9999px) {
+    input[type="radio"],
+    input[type="checkbox"] {
+        opacity: 0;
+    }
+
+    .table_list input[type="radio"] + ins,
+    .table_list input[type="checkbox"] + ins {
+        margin: 0 5px 0 -13px !important;
+    }
+
+    input[type="radio"] + ins,
+    input[type="checkbox"] + ins {
+        width: 14px;
+        height: 14px;
+        border: #333 solid 1px;
+        display: inline-block;
+        position: relative;
+        margin: 0 5px 0 -20px;
+        vertical-align: -2px;
+    }
+
+    input[type="radio"]:disabled + ins,
+    input[type="checkbox"]:disabled + ins {
+        opacity: 0.3;
+        background: #ccc;
+    }
+
+    input[type="radio"]:checked + ins:before,
+    input[type="checkbox"]:checked + ins:before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    /* 单选框 */
+    input[type="radio"] + ins {
+        border-radius: 12px;
+    }
+
+    input[type="radio"]:checked + ins:before {
+        background: #333;
+        border-radius: 6px;
+    }
+
+    /* 复选框 */
+    input[type="checkbox"]:checked + ins:before {
+        width: 8px;
+        height: 5px;
+        border-color: transparent transparent #333 #333;
+        border-width: 1px;
+        border-style: solid;
+        transform: rotate(-45deg);
+        top: -4px;
+    }
+}
+
+/* 外边距 */
+
+.mlr15 {
+    margin: 0 15px;
+}
+
+.mtb15 {
+    margin: 15px 0;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mr15 {
+    margin-right: 15px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.ml15 {
+    margin-left: 15px;
+}
+
+/* 内边距 */
+
+.plr15 {
+    padding: 0 15px;
+}
+
+.ptb15 {
+    padding: 15px 0;
+}
+
+.pt15 {
+    padding-top: 15px;
+}
+
+.pr15 {
+    padding-right: 15px;
+}
+
+.pb15 {
+    padding-bottom: 15px;
+}
+
+.pl15 {
+    padding-left: 15px;
+}

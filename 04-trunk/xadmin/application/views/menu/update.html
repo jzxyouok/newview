@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatibel" content="IE=edge,chrome=1">
+    <title><?=MYTITLE?></title>
+    <base href="<?=MYBASEURL?>"/>
+    <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<?php require_once(VIEWPATH.'/include/header.html');?>
+<!-- 主内容区域 -->
+<div class="container-fluid iframe-container iframe-inverse">
+    <?php require_once(VIEWPATH.'/include/left.html');?>
+    <!-- 主面板 -->
+    <div class="iframe-main">
+        <div class="iframe-main-section">
+            <div class="section_name">
+                <h5 class="section_name_text"><?=$section_name?></h5>
+                <?=$breadcrumb?>
+            </div>
+            <div class="section_container">
+                <div class="form_operat_area">
+                    <form class="form-horizontal" action="<?=$tpl_save_url?>" method="post">
+                        <input type="hidden" name="id" value="<?=$item['id']?>">
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">所属栏目</div>
+                            <div class="col-xs-3">
+                                <select class="form-control" name="parent_id">
+                                    <?=$category_option?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">名称</div>
+                            <div class="col-xs-3">
+                                <input type="text" name="name" value="<?=$item['name']?>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">模块</div>
+                            <div class="col-xs-3">
+                                <input type="text" name="module" value="<?=$item['module']?>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">控制器</div>
+
+                            <div class="col-xs-3">
+                                <input type="text" name="controller" value="<?=$item['controller']?>"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">方法</div>
+                            <div class="col-xs-3">
+                                <input type="text" name="method" value="<?=$item['method']?>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">参数</div>
+                            <div class="col-xs-3">
+                                <input type="text" name="param" value="<?=$item['param']?>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">备注</div>
+
+                            <div class="col-xs-5">
+                                <textarea class="form-control" name="remark" rows="3"><?=$item['remark']?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">权限</div>
+                            <div class="col-xs-8 checkbox">
+                                <?=$menu_auth_checkbox?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">用户类型</div>
+                            <div class="col-xs-8 radio">
+                                <?php foreach($user_type as $val):?>
+                                <label><input type="radio" name="user_type"
+                                              value="<?=$val['ident']?>" <?=$val['checked']?>/><ins></ins><?=$val['name']?></label>
+                                <?php endforeach;?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">状态</div>
+                            <div class="col-xs-8">
+                                <div class="radio">
+                                    <?php foreach($is_show as $val):?>
+                                    <label><input type="radio" name="is_show"
+                                                  value="<?=$val['ident']?>" <?=$val['checked']?>/><ins></ins><?=$val['name']?>
+                                    </label>
+                                    <?php endforeach;?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">排序</div>
+                            <div class="col-xs-1">
+                                <input type="text" name="sort" value="<?=$item['sort']?>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-8">
+                                <button type="submit" name="submit" value="1" class="btn btn-default btn-primary">保存
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="plugin/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="plugin/mtree/css/mtree.css">
+<!--[if lt IE 9]>
+<script type="text/javascript" src="plugin/lib/js/html5shiv.min.js"></script>
+<script type="text/javascript" src="plugin/lib/js/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="plugin/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="plugin/lib/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="plugin/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="plugin/lib/js/common.js"></script>
+<script type="text/javascript" src="plugin/lib/js/template.js"></script>
+<script type="text/javascript" src="plugin/layer/layer.js"></script>
+<script type="text/javascript" src="plugin/mtree/js/mtree.js"></script>
+<script type="text/javascript" src="plugin/lib/js/jquery.cookie.js"></script>
+<!-- 顶部 -->
+<nav class="navbar navbar-primary navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="javascript:;" class="navbar-brand" data-name="sidebar_hidden">信息管理平台</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <?php foreach($nav as $val):?>
+                <li class="<?=$val['highlight']?>"><a href="<?=$val['url']?>"><?=$val['name']?></a></li>
+                <?php endforeach;?>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">欢迎：<?=$_SESSION['session']['username'];?> <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?=site_url('login/signout')?>">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

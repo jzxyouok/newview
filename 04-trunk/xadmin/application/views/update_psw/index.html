@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatibel" content="IE=edge,chrome=1">
+    <title><?=MYTITLE?></title>
+    <base href="<?=MYBASEURL?>"/>
+    <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<?php require_once(VIEWPATH.'/include/header.html');?>
+<!-- 主内容区域 -->
+<div class="container-fluid iframe-container iframe-inverse">
+    <?php require_once(VIEWPATH.'/include/left.html');?>
+    <!-- 主面板 -->
+    <div class="iframe-main">
+        <div class="iframe-main-section">
+            <div class="section_name">
+                <h5 class="section_name_text"><?=$section_name?></h5>
+                <?=$breadcrumb?>
+            </div>
+            <div class="section_container">
+                <div class="form_operat_area">
+                    <form class="form-horizontal" action="<?=$tpl_save_url?>" method="post">
+                        <input type="hidden" name="id" value="<?=$item['id']?>">
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">用户名</div>
+                            <div class="col-xs-3">
+                                <input type="text" name="username" value="<?=$item['username']?>" class="form-control"
+                                       disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label"><span class="text-danger">*</span> 旧密码</div>
+                            <div class="col-xs-3">
+                                <input type="password" name="old_password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label"><span class="text-danger">*</span> 新密码</div>
+                            <div class="col-xs-3">
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label"><span class="text-danger">*</span> 重复新密码</div>
+                            <div class="col-xs-3">
+                                <input type="password" name="verify_password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label">真实姓名</div>
+                            <div class="col-xs-3">
+                                <input type="text" name="realname" value="<?=$item['realname']?>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-8">
+                                <?=$tpl_save_btn?>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //表单验证
+        $('form').submit(function () {
+            var old_password = $.trim($('input[name="old_password"]').val()).replace(/('|")*/, '');
+            var password = $.trim($('input[name="password"]').val()).replace(/('|")*/, '');
+            var verify_password = $.trim($('input[name="verify_password"]').val()).replace(/('|")*/, '');
+            if (old_password == '') {
+                layer.msg('旧密码不能为空', {icon: 4, time: 2000});
+                return false;
+            }
+            if (password == '0') {
+                layer.msg('新密码不能为空', {icon: 4, time: 2000});
+                return false;
+            }
+            if (password != verify_password) {
+                layer.msg('两次新密码填写不一致', {icon: 4, time: 2000});
+                return false;
+            }
+        });
+
+        //验证旧密码
+        $(document).on({
+            blur: function () {
+                var _this = $(this);
+                var old_password = $.trim(_this.val()).replace(/('|")*/, '');
+                if (old_password != '') {
+                    $.post('<?=$tpl_check_old_password_url?>', {old_password: old_password}, function (data) {
+                        if (parseInt(data) == 0) {
+                            layer.msg('旧密码输入错误，请重新输入', {icon: 2, time: 2000}, function () {
+                                _this.val('');
+                            });
+                            return false;
+                        }
+                    });
+                }
+            }
+        }, 'input[name="old_password"]');
+
+    })
+</script>
+
+</body>
+</html>

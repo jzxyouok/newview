@@ -1,0 +1,41 @@
+/*树状菜单*/
+.mtree ul {
+    display: none;
+}
+
+.mtree li {
+    font-size: 0;
+}
+
+.mtree a {
+    font-size: 14px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 30px;
+}
+
+.mtree ul ul a {
+    font-size: 12px;
+}
+
+.mtree a span[data-name="mtree_indent"] {
+    display: none;
+}
+
+.mtree a span[data-name="mtree_checkbox"] {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.mtree a span[data-name="mtree_btn"] {
+    width: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.mtree a.current {
+    background: #ccc;
+}

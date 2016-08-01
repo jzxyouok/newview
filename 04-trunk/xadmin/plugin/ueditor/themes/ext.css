@@ -1,0 +1,489 @@
+/*可以在这里添加你自己的css*/
+* {
+    font-family: 'FontAwesome', 'arial', 'Microsoft YaHei';
+}
+
+.edui-default .edui-editor {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.edui-default .edui-editor {
+    border-color: #d4d4d4;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.edui-default .edui-editor-toolbarbox {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.edui-default .edui-editor-toolbarboxouter {
+    background: #fff;
+    background-image: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.edui-default .edui-toolbar .edui-button .edui-icon,
+.edui-default .edui-toolbar .edui-menubutton .edui-icon,
+.edui-default .edui-toolbar .edui-splitbutton .edui-icon {
+    height: 24px !important;
+    width: 24px !important;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    background-image: none;
+}
+
+.edui-default .edui-toolbar .edui-combox .edui-combox-body {
+    border: none;
+    border-radius: 0;
+    background: #eaedf1;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+.edui-default .edui-toolbar .edui-button .edui-state-hover .edui-button-wrap,
+.edui-default .edui-toolbar .edui-splitbutton .edui-state-hover .edui-splitbutton-body,
+.edui-default .edui-toolbar .edui-menubutton .edui-state-hover .edui-menubutton-body,
+.edui-default .edui-toolbar .edui-button .edui-state-checked .edui-button-wrap,
+.edui-default .edui-toolbar .edui-state-hover .edui-combox-body,
+.edui-default .edui-toolbar .edui-splitbutton .edui-state-checked .edui-splitbutton-body,
+.edui-default .edui-toolbar .edui-menubutton .edui-state-checked .edui-menubutton-body,
+.edui-default .edui-toolbar .edui-splitbutton .edui-state-opened .edui-splitbutton-body,
+.edui-default .edui-toolbar .edui-menubutton .edui-state-opened .edui-menubutton-body,
+.edui-toolbar .edui-state-opened .edui-combox-body {
+    background: #eaedf1;
+    border: none;
+    border-radius: 0;
+}
+
+.edui-default .edui-toolbar .edui-button .edui-button-wrap,
+.edui-default .edui-toolbar .edui-splitbutton .edui-splitbutton-body,
+.edui-default .edui-toolbar .edui-menubutton .edui-menubutton-body,
+.edui-default .edui-hassubmenu .edui-arrow,
+.edui-default .edui-dialog-closebutton .edui-button-body {
+    padding: 0;
+}
+
+.edui-default .edui-popup-content {
+    border: 1px solid #ccc;
+    border-top: 2px solid #666;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.edui-default .edui-popup,
+.edui-default .edui-for-paragraph .edui-listitem-label {
+    font-family: 'arial', 'Microsoft YaHei'
+}
+
+.edui-default .edui-toolbar .edui-colorbutton .edui-colorlump {
+    left: 3px;
+}
+
+.edui-default .edui-toolbar .edui-combox-body .edui-button-body {
+    height: 24px;
+    line-height: 24px;
+}
+
+.edui-default .edui-toolbar .edui-splitbutton-body .edui-arrow,
+.edui-default .edui-toolbar .edui-menubutton-body .edui-arrow,
+.edui-default .edui-toolbar .edui-combox-body .edui-arrow {
+    background: none;
+    height: auto;
+    line-height: 24px;
+    width: 12px;
+    text-align: center;
+}
+
+.edui-default .edui-toolbar .edui-splitbutton-body .edui-arrow:before,
+.edui-default .edui-toolbar .edui-menubutton-body .edui-arrow:before,
+.edui-default .edui-toolbar .edui-combox-body .edui-arrow:before {
+    content: "\f0d7";
+    font-size: 12px;
+}
+
+.edui-default .edui-popup .edui-bordereraser,
+.edui-default .edui-toolbar .edui-state-hover .edui-splitborder,
+.edui-default .edui-toolbar .edui-splitborder,
+.edui-default .edui-toolbar .edui-state-opened .edui-splitborder,
+.edui-default .edui-toolbar .edui-for-inserttable .edui-state-active .edui-splitborder {
+    display: none;
+    width: 0px;
+    border: none;
+}
+
+.edui-default .edui-toolbar .edui-state-active .edui-splitborder,
+.edui-default .edui-toolbar .edui-combox-body .edui-arrow,
+.edui-default .edui-toolbar .edui-state-hover .edui-combox-body .edui-arrow {
+    border: none;
+}
+
+.edui-default .edui-toolbar .edui-combox-body .edui-button-body {
+    width: auto;
+}
+
+.edui-default .edui-listitem,
+.edui-default .edui-menu-body .edui-menuitem {
+    padding: 0;
+}
+
+.edui-default .edui-list .edui-state-hover,
+.edui-default .edui-menu-body .edui-state-hover,
+.edui-default .edui-menu-body .edui-state-checked {
+    border: none;
+    background: #eaedf1;
+}
+
+.edui-default .edui-autotypesetpicker-body td input {
+    vertical-align: middle;
+}
+
+.edui-default .edui-menu-body {
+    background: #fff;
+}
+
+.edui-default .edui-menuitem .edui-icon {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+    font-size: 0;
+    background: none;
+}
+
+.edui-default .edui-menuseparator {
+    margin: 0;
+}
+
+.edui-default .edui-menuseparator-inner {
+    border: none;
+    margin: 0;
+}
+
+.edui-default .edui-menuitem {
+    height: 24px;
+}
+
+.edui-default .edui-menuitem .edui-label {
+    line-height: 24px;
+}
+
+.edui-default .edui-hassubmenu .edui-arrow {
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    text-align: center;
+    float: right;
+    background: none;
+}
+
+.edui-default .edui-hassubmenu .edui-arrow:before {
+    content: "\f0da"
+}
+
+.edui-default .edui-menuseparator {
+    display: none;
+}
+
+.edui-default .edui-dialog-shadow {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.edui-default .edui-dialog-titlebar {
+    height: 34px;
+    border-bottom: 1px solid #c6c6c6;
+    background: #fff;
+    position: relative;
+    cursor: move;
+    /*margin: 0 -1px;*/
+}
+
+.edui-default .edui-dialog-draghandle {
+    height: 34px;
+}
+
+.edui-default .edui-dialog-caption {
+    line-height: 34px;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.edui-default .edui-for-insertvideo .edui-icon {
+    background: none;
+}
+
+.edui-default .edui-dialog-body {
+    padding: 1px;
+}
+
+.edui-default .edui-dialog-closebutton .edui-button-body {
+    background: none;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin: 2px 0 0 0;
+}
+
+.edui-default .edui-dialog-closebutton .edui-state-hover .edui-button-body {
+    background: #eaedf1;
+}
+
+.edui-default .edui-dialog-closebutton .edui-button-body:before {
+    content: "\f00d";
+}
+
+.edui-default .edui-state-checked .edui-menuitem-body {
+    background: #eaedf1;
+}
+
+.edui-default .edui-dialog .edui-default .edui-icon:before {
+    display: none;
+}
+
+.edui-default .edui-dialog-buttons .edui-button .edui-button-body {
+    background: none;
+    height: auto;
+    width: auto;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    cursor: default;
+    border: #ccc solid 1px;
+    padding: 2px 18px;
+    color: #333;
+}
+
+.edui-default .edui-dialog-buttons .edui-button .edui-state-hover .edui-button-body {
+    background: #e6e6e6;
+    border-color: #adadad;
+}
+
+.edui-default .edui-for-link .edui-dialog-content {
+    height: 220px;
+}
+
+.edui-default .edui-bubble .edui-popup-content {
+    border: 1px solid #ccc;
+    border-top: 2px solid #666;
+    background-color: #fff;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.edui-default span.edui-clickable {
+    color: #333;
+}
+
+.edui-default .edui-for-insertframe .edui-dialog-content {
+    width: 380px;
+    height: 240px;
+}
+
+.edui-default .edui-editor-messageholder {
+    display: none;
+}
+
+.edui-default .edui-colorpicker-nocolor {
+    height: 20px;
+    width: 60px;
+    padding: 0;
+    line-height: 20px;
+    text-align: center;
+}
+
+/*icon*/
+.edui-default .edui-for-source .edui-icon:before {
+    content: "\f121";
+}
+
+.edui-default .edui-for-undo .edui-icon:before {
+    content: "\f0e2";
+}
+
+.edui-default .edui-for-redo .edui-icon:before {
+    content: "\f01e";
+}
+
+.edui-default .edui-for-bold .edui-icon:before {
+    content: "\f032"
+}
+
+.edui-default .edui-for-italic .edui-icon:before {
+    content: "\f033"
+}
+
+.edui-default .edui-for-underline .edui-icon:before {
+    content: "\f0cd"
+}
+
+.edui-default .edui-for-strikethrough .edui-icon:before {
+    content: "\f0cc"
+}
+
+.edui-default .edui-for-superscript .edui-icon:before {
+    content: "\f12b"
+}
+
+.edui-default .edui-for-subscript .edui-icon:before {
+    content: "\f12c"
+}
+
+.edui-default .edui-for-removeformat .edui-icon:before {
+    content: "\f12d"
+}
+
+.edui-default .edui-for-pasteplain .edui-icon:before {
+    content: "\f0f6"
+}
+
+.edui-default .edui-for-forecolor .edui-icon:before {
+    content: "\f031"
+}
+
+.edui-default .edui-for-insertorderedlist .edui-icon:before {
+    content: "\f0cb"
+}
+
+.edui-default .edui-for-insertunorderedlist .edui-icon:before {
+    content: "\f0ca"
+}
+
+.edui-default .edui-for-cleardoc .edui-icon:before {
+    content: "\f016"
+}
+
+.edui-default .edui-for-lineheight .edui-icon:before {
+    content: "\f034"
+}
+
+.edui-default .edui-for-fullscreen .edui-icon:before {
+    content: "\f0b2"
+}
+
+.edui-default .edui-for-simpleupload .edui-icon:before {
+    content: "\f03e"
+}
+
+.edui-default .edui-for-justifyleft .edui-icon:before {
+    content: "\f036"
+}
+
+.edui-default .edui-for-justifycenter .edui-icon:before {
+    content: "\f037"
+}
+
+.edui-default .edui-for-justifyright .edui-icon:before {
+    content: "\f038"
+}
+
+.edui-default .edui-for-justifyjustify .edui-icon:before {
+    content: "\f039"
+}
+
+.edui-default .edui-for-link .edui-icon:before {
+    content: "\f0c1"
+}
+
+.edui-default .edui-for-unlink .edui-icon:before {
+    content: "\f127"
+}
+
+.edui-default .edui-for-imageleft .edui-icon:before {
+    content: "\f03b"
+}
+
+.edui-default .edui-for-imageright .edui-icon:before {
+    content: "\f03c"
+}
+
+.edui-default .edui-for-music .edui-icon:before {
+    content: "\f001"
+}
+
+.edui-default .edui-for-insertvideo .edui-icon:before {
+    content: "\f03d"
+}
+
+.edui-default .edui-for-print .edui-icon:before {
+    content: "\f02f"
+}
+
+.edui-default .edui-for-searchreplace .edui-icon:before {
+    content: "\f002"
+}
+
+.edui-default .edui-for-drafts .edui-icon:before {
+    content: "\f1b2"
+}
+
+.edui-default .edui-for-backcolor .edui-icon:before {
+    content: "\f043"
+}
+
+.edui-default .edui-for-formatmatch .edui-icon:before {
+    content: "\f1fc"
+}
+
+.edui-default .edui-for-inserttable .edui-icon:before {
+    content: "\f0ce"
+}
+
+.edui-default .edui-for-autotypeset .edui-icon:before {
+    content: "\f0d0"
+}
+
+.edui-default .edui-for-horizontal .edui-icon:before {
+    content: "\f068"
+}
+
+.edui-default .edui-for-anchor .edui-icon:before {
+    content: "\f13d"
+}
+
+.edui-default .edui-for-map .edui-icon:before {
+    content: "\f279"
+}
+
+.edui-default .edui-for-attachment .edui-icon:before {
+    content: "\f0c6"
+}
+
+.edui-default .edui-for-blockquote .edui-icon:before {
+    content: "\f1dd"
+}
+
+.edui-default .edui-for-background .edui-icon:before {
+    content: "\f042"
+}
+
+.edui-default .edui-for-insertimage .edui-icon:before {
+    content: "\f00a"
+}
+
+.edui-default .edui-for-insertframe .edui-icon:before {
+    content: "\f0db"
+}
+
+.edui-default .edui-for-pagebreak .edui-icon:before {
+    content: "\f24d"
+}

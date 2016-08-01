@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatibel" content="IE=edge,chrome=1">
+    <title><?=MYTITLE?></title>
+    <base href="<?=MYBASEURL?>"/>
+    <link rel="stylesheet" href="plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<?php require_once(VIEWPATH.'/include/header.html');?>
+<!-- 主内容区域 -->
+<div class="container-fluid iframe-container iframe-inverse">
+    <?php require_once(VIEWPATH.'/include/left.html');?>
+    <!-- 主面板 -->
+    <div class="iframe-main">
+        <div class="iframe-main-section">
+            <div class="section_name">
+                <h5 class="section_name_text"><?=$section_name?></h5>
+                <?=$breadcrumb?>
+            </div>
+            <div class="section_container">
+                <div class="btn-group col-xs-offset-2 col-xs-10 config_menubar">
+                    <?=$config_group?>
+                </div>
+                <div class="form_operat_area">
+                    <form class="form-horizontal" action="<?=$tpl_save_url?>" method="post">
+                        <?php
+                    foreach($forms as $val):
+                    $help_block = ($val['remark']=='') ? '' : '<span class="help-block">'.$val['remark'].'</span>';
+                        ?>
+                        <div class="form-group">
+                            <div class="col-xs-2 control-label"><?=$val['title']?></div>
+                            <?php if($val['type']=='text'):?>
+                            <div class="col-xs-6">
+                                <input type="text" name="<?=$val['name']?>" value="<?=$val['val']?>"
+                                       class="form-control">
+                                <?=$help_block?>
+                            </div>
+                            <?php elseif($val['type']=='radio'):?>
+                            <div class="col-xs-6 radio">
+                                <?php
+                                foreach($val['param_array'] as $item):
+                                $checked = ($val['val'] == $item['value']) ? 'checked' : '';
+                                ?>
+                                <label><input type="radio" name="<?=$val['name']?>"
+                                              value="<?=$item['value']?>" <?=$checked?>><ins></ins><?=$item['name']?></label>
+                                <?php endforeach;?>
+                                <?=$help_block?>
+                            </div>
+                            <?php elseif($val['type']=='checkbox'):?>
+                            <div class="col-xs-6 checkbox">
+                                <?php
+                                foreach($val['param_array'] as $item):
+                                $checked = (in_array($item['value'],$val['val'])) ? 'checked' : '';
+                                ?>
+                                <label><input type="checkbox" name="<?=$val['name']?>[]"
+                                              value="<?=$item['value']?>" <?=$checked?>><ins></ins><?=$item['name']?></label>
+                                <?php endforeach;?>
+                                <?=$help_block?>
+                            </div>
+                            <?php elseif($val['type']=='select'):?>
+                            <div class="col-xs-3">
+                                <select name="<?=$val['name']?>" class="form-control">
+                                    <option value="0">-请选择-</option>
+                                    <?php
+                                    foreach($val['param_array'] as $item):
+                                    $selected = ($val['val'] == $item['value']) ? 'selected' : '';
+                                    ?>
+                                    <option value="<?=$item['value']?>"
+                                    <?=$selected?>><?=$item['name']?></option>
+                                    <?php endforeach;?>
+                                </select>
+                                <?=$help_block?>
+                            </div>
+                            <?php elseif($val['type']=='textarea'):?>
+                            <div class="col-xs-6">
+                                <textarea name="<?=$val['name']?>" class="form-control"
+                                          rows="3"><?=$val['val']?></textarea>
+                                <?=$help_block?>
+                            </div>
+                            <?php endif; ?>
+                            <div class="col-xs-2 control-label config_name"><?=$val['name']?></div>
+                        </div>
+                        <?php
+                    endforeach;
+                    if(!empty($forms)):
+                    ?>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-8">
+                                <?=$tpl_save_btn?>
+                            </div>
+                        </div>
+                        <?php endif;?>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
