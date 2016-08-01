@@ -1,0 +1,53 @@
+@charset "gb2312";
+body {
+    font-size: 12px;
+    font-family: "Î¢ÈíÑÅºÚ";
+    color: #707070;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+from {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: 0;
+}
+
+a {
+    color: #707070;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #bc111a;
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 12px;
+    font-weight: normal;
+}
